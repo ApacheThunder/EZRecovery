@@ -152,15 +152,13 @@ bool FW_update(u16 Current_FW_ver, u16 Built_in_ver, const unsigned char* binary
 				SPI_Write_Disable();
 				while (UpdateProgressText)swiWaitForVBlank();
 				
-				for(offset = 0x0000; offset < (vu32)binarySize; offset += 256) {
+				for (offset = 0x0000; offset < (vu32)binarySize; offset += 256) {
 					finalResult = (offset*100/binarySize+1);
 					if (!UpdateProgressText) {
 						textBuffer = "\n Progress: ";
 						statData = (offset*100/binarySize+1);
 						UpdateProgressText = true;
 					}
-					
-					// iprintf(" %lu%%", (offset*100/binarySize+1));
 
 					FAT_table_buffer[0] = (wirte_address + offset);
 					
