@@ -12,11 +12,6 @@ export TOPDIR	:=	$(CURDIR)
 # this is relative to the Makefile
 NITRO_FILES	:=
 
-# These set the information text in the nds file
-# GAME_TITLE     := SuperCard FW Writer
-# GAME_SUBTITLE1 := Metroid Maniac
-# GAME_SUBTITLE2 := Modified by ApacheThunder
-
 include $(DEVKITARM)/ds_rules
 
 .PHONY: checkarm7 checkarm9 clean
@@ -39,8 +34,6 @@ $(TARGET).nds	: $(NITRO_FILES) arm7/$(TARGET).elf arm9/$(TARGET).elf
 	ndstool	-c $(TARGET).nds -7 arm7/$(TARGET).elf -9 arm9/$(TARGET).elf \
 	-t banner.bin \
 	$(_ADDFILES)
-	
-#	-b $(CURDIR)/icon.bmp "$(GAME_TITLE);$(GAME_SUBTITLE1);$(GAME_SUBTITLE2)" \
 
 #---------------------------------------------------------------------------------
 arm7/$(TARGET).elf:
